@@ -29,7 +29,7 @@ Any content field set to `null` renders as a yellow **Pending** slot. To fill on
 - **Films** — `films[n].video = { src: "/films/<slug>.mp4", poster: "/films/<slug>-poster.jpg", captions: "/films/<slug>.vtt", aspect: "9/16" }`
   and `films[n].breakdown = "…"`
 - **Concept details** — `audience`, `insight`, `hook`, `narrative`, `rationale` on each concept
-- **Brief** — `brief.assignment`
+- **Brief** — `brief.assignments` and `brief.interpretation`
 - **Testing hypotheses** — `nextSteps.hypotheses = [{ title, body }, …]`
 - **PDFs** — set `href` on the PDF entries in `deliverables`
 

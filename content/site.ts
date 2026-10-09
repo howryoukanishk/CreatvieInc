@@ -20,18 +20,27 @@ export const sections = [
 ] as const;
 
 export const brief = {
-  // Original assignment wording from the hiring team — pending.
-  assignment: null as string | null,
-  workstreams: [
+  // The hiring team's assignment, lightly condensed. Contact details are left out on purpose.
+  from: "Vāyas Life hiring team",
+  timeline: "2 days",
+  assignments: [
     {
-      index: "A",
-      title: "Competitive creative research",
-      body: "Review competitor Meta ads in the calcium / bone-health category — five static and five video — and assess what each does creatively.",
+      index: "01",
+      title: "Meta Ads competition search",
+      tasks: [
+        "Go through the Meta Ad Library.",
+        "Share the 5 top static ads from brands selling calcium supplements for women, and rate why they are the best.",
+        "Share the 5 best competitor video ads, with reasoning for why they are the best.",
+        "Put each set slide by slide in a PPT, with links to the ads.",
+      ],
     },
     {
-      index: "B",
-      title: "Original video-ad concepts",
-      body: "Develop original video-ad concepts for Vāyas Life and produce finished executions.",
+      index: "02",
+      title: "Video ad concept",
+      tasks: [
+        "Create one strong video ad concept for Vāyas Life Calcium for Women.",
+        "Generate the video with Google Flow and share one ad sample.",
+      ],
     },
   ],
   product: {
@@ -41,8 +50,20 @@ export const brief = {
   },
   question:
     "How can Vāyas make bone-health support feel personally relevant to women 30+ while keeping the proposition focused and defensible?",
-  discipline:
-    "Health-claim discipline: do not imply treatment, prevention, symptom relief or guaranteed outcomes without appropriate evidence.",
+  interpretation: [
+    {
+      title: "“Top” means creative strength",
+      body: "The Ad Library shows no performance data, so each ad is scored on five creative criteria and labelled a subjective assessment, not a ranking of results.",
+    },
+    {
+      title: "Three routes, not one",
+      body: "The brief asked for one concept and one sample. I developed three routes (cinematic, social-native and emotional) so the team can compare approaches to the same idea.",
+    },
+    {
+      title: "Claims stay defensible",
+      body: "The rule I worked to: no implied treatment, prevention, symptom relief or guaranteed outcomes without appropriate evidence.",
+    },
+  ],
 };
 
 export const insight = {

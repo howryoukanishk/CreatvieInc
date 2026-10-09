@@ -64,27 +64,32 @@ export function Brief() {
         <SectionHeader
           index="01"
           label="The Brief"
-          title={<>Two workstreams, one question.</>}
+          title={<>Two assignments, two days.</>}
           intro="What the hiring team asked for, kept separate from how I chose to read it."
         />
 
         <div className="mt-14 grid gap-5 lg:mt-20 lg:grid-cols-12">
           <article className="card p-6 sm:p-8 lg:col-span-7">
-            <p className="label text-muted">The assignment</p>
-            {brief.assignment ? (
-              <p className="mt-4 text-lg leading-relaxed">{brief.assignment}</p>
-            ) : (
-              <Pending what="Original assignment wording from the hiring team" className="mt-4" />
-            )}
-            <ul className="mt-8 grid gap-6 sm:grid-cols-2">
-              {brief.workstreams.map((w) => (
-                <li key={w.index} className="border-t border-ink/15 pt-5">
-                  <span className="label text-forest">Workstream {w.index}</span>
-                  <h3 className="mt-2 font-display text-xl font-bold text-forest">{w.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted">{w.body}</p>
-                </li>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <p className="label text-muted">The assignment · from the {brief.from}</p>
+              <p className="label rounded-sm bg-sage px-2 py-1 text-forest">Timeline: {brief.timeline}</p>
+            </div>
+            <div className="mt-8 grid gap-8 sm:grid-cols-2">
+              {brief.assignments.map((a) => (
+                <section key={a.index} className="border-t border-ink/15 pt-5">
+                  <span className="label text-forest">Assignment {a.index}</span>
+                  <h3 className="mt-2 font-display text-xl font-bold text-forest">{a.title}</h3>
+                  <ul className="mt-4 space-y-3 text-[15px] leading-relaxed">
+                    {a.tasks.map((t) => (
+                      <li key={t} className="flex gap-3">
+                        <span aria-hidden className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-forest/50" />
+                        <span>{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
               ))}
-            </ul>
+            </div>
           </article>
 
           <article className="rounded-md bg-sage p-6 sm:p-8 lg:col-span-5">
@@ -100,7 +105,14 @@ export function Brief() {
             <p className="label text-yellow lg:col-span-3">My interpretation</p>
             <div className="lg:col-span-9">
               <p className="mt-4 font-display text-2xl font-medium leading-snug sm:text-3xl lg:mt-0">“{brief.question}”</p>
-              <p className="mt-6 text-sm leading-relaxed text-ivory/65">{brief.discipline}</p>
+              <ul className="mt-8 grid gap-6 border-t border-ivory/15 pt-6 sm:grid-cols-3">
+                {brief.interpretation.map((i) => (
+                  <li key={i.title}>
+                    <p className="font-display text-lg font-bold">{i.title}</p>
+                    <p className="mt-2 text-sm leading-relaxed text-ivory/70">{i.body}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </article>
         </div>
