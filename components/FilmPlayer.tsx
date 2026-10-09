@@ -22,19 +22,26 @@ export function FilmPlayer({ film, title }: { film: Film; title: string }) {
     );
   }
 
-  const { src, poster, captions, aspect } = film.video;
+  const { src, poster, captions, aspect, duration } = film.video;
   return (
-    <video
-      className={`mx-auto block rounded-md bg-black ${aspectClass[aspect]}`}
-      controls
-      playsInline
-      preload="none"
-      poster={poster}
-      aria-label={`${title} — concept execution`}
-    >
-      <source src={src} type="video/mp4" />
-      {captions && <track kind="captions" src={captions} srcLang="en" label="English" default />}
-      Your browser does not support embedded video. <a href={src}>Download the film</a>.
-    </video>
+    <figure className={`mx-auto lg:mx-0 ${aspectClass[aspect].split(" ").filter((c) => c.startsWith("max-w")).join(" ")}`}>
+      <video
+        className={`block w-full rounded-md bg-black ${aspectClass[aspect]}`}
+        controls
+        playsInline
+        preload="none"
+        poster={poster}
+        aria-label={`${title} — concept execution`}
+      >
+        <source src={src} type="video/mp4" />
+        {captions && <track kind="captions" src={captions} srcLang="en" label="English" default />}
+        Your browser does not support embedded video. <a href={src}>Download the film</a>.
+      </video>
+      <figcaption className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-ivory/55">
+        <span className="label text-[10px] text-sage">Concept execution</span>
+        <span>{duration} · {aspect.replace("/", ":")}</span>
+        {!captions && <span>Key lines appear as on-screen text.</span>}
+      </figcaption>
+    </figure>
   );
 }

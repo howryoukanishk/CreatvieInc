@@ -102,8 +102,10 @@ export const concepts: Concept[] = [
     summary: "A life-stage-led story about how routines and priorities evolve.",
     audience: null,
     insight: null,
-    hook: null,
-    narrative: null,
+    hook:
+      "Everyday moments (tying shoes, picking up a bag) under the line “Your life changes in your 30s.”",
+    narrative:
+      "“Your routine changes. Your priorities change. So why should your nutrition stay the same?” builds over daily scenes and resolves on “Your nutrition should too.” The pack follows, with its ingredients (calcium citrate, vitamin D2, magnesium, zinc, soy isoflavones) before the end card.",
     rationale: null,
   },
   {
@@ -114,8 +116,10 @@ export const concepts: Concept[] = [
     summary: "A fast, text-driven creative built around the priorities that compete for attention after 30.",
     audience: null,
     insight: null,
-    hook: null,
-    narrative: null,
+    hook:
+      "A hand writes “Your 30+ checklist” in a notebook, setting up a list format familiar from social feeds.",
+    narrative:
+      "Items tick off as she moves through her day (balanced meals, regular movement, time for yourself) until an empty box asks “Bone health: on your list?”. “Meet Vāyas” introduces the pack, ingredient tags appear one by one, and it closes on “Check in with your health.”",
     rationale: null,
   },
   {
@@ -127,8 +131,10 @@ export const concepts: Concept[] = [
       "A movement-led story connecting everyday responsibilities with the idea of daily nutritional support.",
     audience: null,
     insight: null,
-    hook: null,
-    narrative: null,
+    hook:
+      "Bare feet meet the floor, then shoes go on, under “Every day, your body carries you.”",
+    narrative:
+      "“Every step. Every responsibility. Every moment that matters.” runs over stairs, groceries, a stretch and carrying a child, landing on “You ask a lot from it.” She takes her tablet with a meal (“Daily nutritional support”), the ingredients appear, and the end card completes the line: “Take care of what carries you.”",
     rationale: null,
   },
 ];
@@ -136,14 +142,38 @@ export const concepts: Concept[] = [
 export type Film = {
   slug: string;
   conceptSlug: string;
-  // Real video files — pending upload. Expected paths:
-  //   /films/<slug>.mp4, /films/<slug>-poster.jpg, /films/<slug>.vtt
-  video: { src: string; poster: string; captions?: string; aspect: "9/16" | "16/9" | "4/5" | "1/1" } | null;
+  // The three finished concept films. Paths:
+  //   /films/<slug>.mp4, /films/<slug>-poster.jpg, optional /films/<slug>.vtt
+  video: {
+    src: string;
+    poster: string;
+    captions?: string;
+    aspect: "9/16" | "16/9" | "4/5" | "1/1";
+    duration: string;
+  } | null;
   breakdown: string | null;
 };
 
 export const films: Film[] = [
-  { slug: "cinematic", conceptSlug: "cinematic", video: null, breakdown: null },
-  { slug: "social-native", conceptSlug: "social-native", video: null, breakdown: null },
-  { slug: "emotional", conceptSlug: "emotional", video: null, breakdown: null },
+  {
+    slug: "cinematic",
+    conceptSlug: "cinematic",
+    video: { src: "/films/cinematic.mp4", poster: "/films/cinematic-poster.jpg", aspect: "9/16", duration: "30s" },
+    breakdown:
+      "A three-part structure: a life-stage observation, the question it raises, then the product as the answer. Warm, natural-light interiors and a muted green-and-cream palette carry through to the end card, “Your body changes. Your nutrition should too.”",
+  },
+  {
+    slug: "social-native",
+    conceptSlug: "social-native",
+    video: { src: "/films/social-native.mp4", poster: "/films/social-native-poster.jpg", aspect: "9/16", duration: "30s" },
+    breakdown:
+      "The on-screen checklist carries the story, so it reads with the sound off. The unticked box beside bone health is the turn, and the product arrives as the answer to it.",
+  },
+  {
+    slug: "emotional",
+    conceptSlug: "emotional",
+    video: { src: "/films/emotional.mp4", poster: "/films/emotional-poster.jpg", aspect: "9/16", duration: "25s" },
+    breakdown:
+      "A rhythm of short, repeated lines, each paired with an everyday movement. The film stays on what the body does each day rather than on symptoms, and the product enters as daily support before the end card.",
+  },
 ];
