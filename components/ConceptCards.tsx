@@ -5,7 +5,7 @@ import { useState } from "react";
 import type { Concept } from "@/content/site";
 import { Pending } from "./Pending";
 
-type FieldKey = "audience" | "insight" | "hook" | "narrative" | "rationale" | "direction";
+type FieldKey = "audience" | "insight" | "hook" | "narrative" | "rationale" | "role" | "direction";
 
 const fields: { key: FieldKey; label: string }[] = [
   { key: "audience", label: "Intended audience" },
@@ -13,6 +13,7 @@ const fields: { key: FieldKey; label: string }[] = [
   { key: "hook", label: "Opening hook" },
   { key: "narrative", label: "Narrative & product integration" },
   { key: "rationale", label: "Creative rationale" },
+  { key: "role", label: "Creative role" },
   { key: "direction", label: "Creative direction" },
 ];
 
@@ -60,7 +61,10 @@ function CoreCard({
           <span className={`label ${dark ? "text-yellow" : "text-forest"}`}>Concept {c.index}</span>
           <span className={`label ${dark ? "text-sage" : "text-muted"}`}>{c.route}</span>
         </div>
-        <h3 className={`display mt-10 text-[1.9rem] leading-[1.02] sm:text-[2.1rem] ${dark ? "text-ivory" : "text-forest"}`}>
+        {c.recommended && (
+          <p className="label mt-6 inline-flex self-start rounded-sm bg-forest px-2 py-1 text-[10px] text-yellow">Recommended lead</p>
+        )}
+        <h3 className={`display ${c.recommended ? "mt-4" : "mt-10"} text-[1.9rem] leading-[1.02] sm:text-[2.1rem] ${dark ? "text-ivory" : "text-forest"}`}>
           {c.title}
         </h3>
         <p className={`mt-4 leading-relaxed ${dark ? "text-ivory/75" : "text-muted"}`}>{c.summary}</p>

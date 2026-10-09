@@ -55,8 +55,8 @@ export const brief = {
       body: "The Ad Library shows no performance data, so each ad is scored on five creative criteria and labelled a subjective assessment, not a ranking of results.",
     },
     {
-      title: "Three routes, not one",
-      body: "The brief asked for one concept and one sample. I developed three routes (cinematic, social-native and emotional) so the team can compare approaches to the same idea.",
+      title: "Four routes, one lead",
+      body: "The brief asked for one concept and one sample. I developed three routes plus an animated bonus film, and recommend leading with The 30+ Checklist.",
     },
     {
       title: "Claims stay defensible",
@@ -92,7 +92,9 @@ export type Concept = {
   hook?: string | null;
   narrative?: string | null;
   rationale: string | null;
+  role?: string;
   direction?: string;
+  recommended?: boolean;
   // Bonus concepts sit outside the three core routes and have no finished film yet.
   bonus?: {
     label: string;
@@ -111,13 +113,18 @@ export const concepts: Concept[] = [
     route: "Cinematic",
     title: "Your Body Changes. Your Nutrition Should Too.",
     summary: "A life-stage-led story about how routines and priorities evolve.",
-    audience: null,
-    insight: null,
+    audience:
+      "Women aged 30–45 who are becoming more conscious of changing nutritional needs and long-term wellness.",
+    insight:
+      "As women move through different life stages, their routines and priorities evolve, but their own nutritional needs can easily take a back seat.",
     hook:
       "Everyday moments (tying shoes, picking up a bag) under the line “Your life changes in your 30s.”",
     narrative:
       "“Your routine changes. Your priorities change. So why should your nutrition stay the same?” builds over daily scenes and resolves on “Your nutrition should too.” The pack follows, with its ingredients (calcium citrate, vitamin D2, magnesium, zinc, soy isoflavones) before the end card.",
-    rationale: null,
+    rationale:
+      "This route makes the subject feel relevant without using fear. Everyday moments show how a woman’s routine changes, leading to the thought that her wellness routine should evolve too. The product becomes a considered addition to that routine rather than a dramatic solution to a problem.",
+    role:
+      "Educational and awareness-led. It helps introduce the category through a life-stage lens and gives the brand a calm, supportive tone.",
   },
   {
     slug: "social-native",
@@ -125,13 +132,19 @@ export const concepts: Concept[] = [
     route: "Social-native",
     title: "The 30+ Checklist",
     summary: "A fast, text-driven creative built around the priorities that compete for attention after 30.",
-    audience: null,
-    insight: null,
+    audience:
+      "Women aged 30–45 balancing work, family, movement, meals, and personal responsibilities while trying to maintain healthier habits.",
+    insight:
+      "Women often remember daily wellness habits, but specific aspects of long-term health can be overlooked when life is busy.",
     hook:
       "A hand writes “Your 30+ checklist” in a notebook, setting up a list format familiar from social feeds.",
     narrative:
       "Items tick off as she moves through her day (balanced meals, regular movement, time for yourself) until an empty box asks “Bone health: on your list?”. “Meet Vāyas” introduces the pack, ingredient tags appear one by one, and it closes on “Check in with your health.”",
-    rationale: null,
+    rationale:
+      "A checklist is instantly recognizable and gives the video a simple, mobile-first hook. The viewer sees familiar wellness habits being checked off before the ad asks a new question: is bone health on the list? That creates a natural bridge from a relatable idea to the Vāyas product reveal and CTA.",
+    role:
+      "The strongest performance-oriented route: concise, structured, easy to understand without sound, and straightforward to test through different hooks, pacing, and opening frames.",
+    recommended: true,
   },
   {
     slug: "emotional",
@@ -140,13 +153,18 @@ export const concepts: Concept[] = [
     title: "Take Care of What Carries You.",
     summary:
       "A movement-led story connecting everyday responsibilities with the idea of daily nutritional support.",
-    audience: null,
-    insight: null,
+    audience:
+      "Women aged 30–50 with demanding daily routines who want to remain engaged in their responsibilities, interests, and everyday activities.",
+    insight:
+      "Women depend on their bodies to carry them through everyday life, yet self-care can become secondary to everything else they do.",
     hook:
       "Bare feet meet the floor, then shoes go on, under “Every day, your body carries you.”",
     narrative:
       "“Every step. Every responsibility. Every moment that matters.” runs over stairs, groceries, a stretch and carrying a child, landing on “You ask a lot from it.” She takes her tablet with a meal (“Daily nutritional support”), the ingredients appear, and the end card completes the line: “Take care of what carries you.”",
-    rationale: null,
+    rationale:
+      "The line connects the body’s everyday work to the idea of self-care. Familiar actions—getting ready, walking, moving through responsibilities—make the message feel personal rather than clinical. It gives Vāyas a role in a broader wellness conversation while keeping the story rooted in the audience’s own life.",
+    role:
+      "Emotion-led lifestyle storytelling. It can build affinity and recall through a memorable line and relatable everyday moments.",
   },
   {
     slug: "more-moments",
@@ -161,6 +179,8 @@ export const concepts: Concept[] = [
       "Health matters not only as a long-term goal, but because it is connected to the everyday experiences and relationships that make life meaningful.",
     rationale:
       "A fully animated, emotionally driven story follows an elderly grandmother through moments of discomfort and reflection before shifting toward the simple joy of gardening and family life. The familiar, expressive animation style creates an emotional connection and helps the brand stand out from conventional supplement advertising. The story concludes with Vāyas as part of a broader bone-health and wellness routine, without implying that the product cures pain or restores mobility.",
+    role:
+      "Brand differentiation and emotional storytelling. It expands the campaign’s creative range beyond direct-response formats and demonstrates a more cinematic, character-led approach.",
     direction:
       "Fully animated, stylized 3D with expressive characters, warm cinematic lighting, soft textures, a muted sage-green and ivory palette, and emotional family-film storytelling.",
     bonus: {
@@ -195,6 +215,44 @@ export const concepts: Concept[] = [
     },
   },
 ];
+
+// From the Assignment 2 creative strategy document.
+export const strategy = {
+  challenge:
+    "Make bone health feel relevant to everyday life — then connect that relevance to Vāyas through a clear, emotionally resonant product story.",
+  problem:
+    "Calcium and bone-health advertising can easily become clinical, product-heavy, or fear-led. The approach is to make the category feel more human: connect bone health to the routines, relationships, and moments women care about, then introduce Vāyas as an option within a broader wellness routine.",
+  audience:
+    "Women aged 30–45 who are balancing work, family, personal responsibilities, and their own health. Bone health can feel less immediate or easier to overlook.",
+  insight:
+    "People are more likely to connect with a health message when it relates to something they already value.",
+  principles: [
+    { title: "Lead with a human truth", body: "Start from everyday routines, overlooked needs, or meaningful relationships." },
+    { title: "Make the message easy to grasp", body: "Use a clear hook and one primary message per ad." },
+    { title: "Let the product enter naturally", body: "Move from relevance to product recognition, then to a clear CTA." },
+    { title: "Stay responsible", body: "Avoid implying that the product cures pain, reverses ageing, or guarantees a health outcome." },
+  ],
+  note: "The audience definitions and insights are creative hypotheses for concept development, not findings from quantitative consumer research.",
+};
+
+export const recommendedExecution = {
+  conceptSlug: "social-native",
+  title: "Lead with The 30+ Checklist.",
+  intro:
+    "For the primary video-ad execution, the checklist is the clearest starting point because the concept, hook, and product transition can be understood quickly on a mobile screen. The animated film can sit alongside it as a bonus brand-building route.",
+  beats: [
+    { time: "0–3 sec", beat: "Checklist hook: “Your 30+ checklist”", purpose: "Win attention and establish the organizing device." },
+    { time: "3–6 sec", beat: "Balanced meals", purpose: "Start with a familiar wellness habit." },
+    { time: "6–9 sec", beat: "Regular movement", purpose: "Build recognition and rhythm." },
+    { time: "9–12 sec", beat: "Time for yourself", purpose: "Make the checklist personal and relatable." },
+    { time: "12–15 sec", beat: "“Remember your bone health”", purpose: "Introduce the key reminder and bridge to product." },
+    { time: "15–19 sec", beat: "Vāyas product reveal", purpose: "Create product recognition and communicate the verified product name." },
+    { time: "19–24 sec", beat: "Verified ingredient list", purpose: "Provide formulation information clearly and accurately." },
+    { time: "24–30 sec", beat: "Brand close and “Shop Now”", purpose: "Leave enough time for brand recall and action." },
+  ],
+  rationale:
+    "The opening uses a recognizable behavior rather than a product claim. The checklist creates structure and pace; the bone-health reminder provides the strategic turn; the product shot delivers recognition; and the CTA closes the story.",
+};
 
 export type Film = {
   slug: string;

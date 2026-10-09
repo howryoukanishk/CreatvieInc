@@ -1,5 +1,5 @@
 import { criteria, SCORE_DISCLAIMER, staticAds, videoAds } from "@/content/research";
-import { brief, concepts, films, insight, site } from "@/content/site";
+import { brief, concepts, films, insight, recommendedExecution, site, strategy } from "@/content/site";
 import { ConceptCards } from "./ConceptCards";
 import { ExternalLink } from "./ExternalLink";
 import { FilmPlayer } from "./FilmPlayer";
@@ -226,11 +226,80 @@ export function CreativeLab() {
           title="Three concepts. Three different creative routes."
           intro="Each route tests a different way into the same hypothesis, followed by an animated bonus film. Open a concept to see the thinking behind it."
         />
-        <div className="mt-14 lg:mt-20">
+        <div className="mt-14 grid gap-8 border-t border-ink/15 pt-10 lg:mt-20 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <p className="label text-muted">The creative challenge</p>
+            <p className="mt-4 font-display text-2xl font-medium leading-snug text-forest sm:text-[1.75rem]">
+              {strategy.challenge}
+            </p>
+            <p className="mt-5 text-[15px] leading-relaxed text-muted">{strategy.problem}</p>
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="label text-muted">Creative principles</p>
+            <ol className="mt-4 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+              {strategy.principles.map((pr, i) => (
+                <li key={pr.title} className="border-t border-ink/15 pt-4">
+                  <span className="label text-forest">0{i + 1}</span>
+                  <p className="mt-1.5 font-display text-lg font-bold leading-tight text-forest">{pr.title}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{pr.body}</p>
+                </li>
+              ))}
+            </ol>
+            <dl className="mt-8 grid gap-6 sm:grid-cols-2">
+              <div>
+                <dt className="label text-muted">Primary audience</dt>
+                <dd className="mt-2 text-sm leading-relaxed">{strategy.audience}</dd>
+              </div>
+              <div>
+                <dt className="label text-muted">Core strategic insight</dt>
+                <dd className="mt-2 text-sm leading-relaxed">{strategy.insight}</dd>
+              </div>
+            </dl>
+            <p className="mt-6 text-xs leading-relaxed text-muted">{strategy.note}</p>
+          </div>
+        </div>
+
+        <div className="mt-14 lg:mt-16">
           <ConceptCards concepts={concepts} />
         </div>
+
+        <RecommendedExecution />
       </Reveal>
     </section>
+  );
+}
+
+function RecommendedExecution() {
+  const r = recommendedExecution;
+  return (
+    <article className="mt-14 rounded-md bg-sage p-6 sm:p-8 lg:mt-16 lg:grid lg:grid-cols-12 lg:gap-10 lg:p-10">
+      <div className="lg:col-span-4">
+        <p className="label text-forest">Recommended execution</p>
+        <h3 className="display mt-4 text-3xl text-forest sm:text-4xl">{r.title}</h3>
+        <p className="mt-4 leading-relaxed">{r.intro}</p>
+        <p className="mt-4 text-sm leading-relaxed text-ink/75">{r.rationale}</p>
+        <p className="mt-6 text-sm">
+          <a href={`#film-${r.conceptSlug}`} className="link-arrow on-light text-forest">
+            Watch The 30+ Checklist <span aria-hidden>↓</span>
+          </a>
+        </p>
+      </div>
+      <div className="mt-10 lg:col-span-8 lg:mt-0">
+        <p className="label text-forest">Planned beat sheet · 30 seconds</p>
+        <ol className="mt-4 border-t border-forest/20">
+          {r.beats.map((b) => (
+            <li
+              key={b.time}
+              className="grid grid-cols-[5.5rem_1fr] gap-x-4 gap-y-1 border-b border-forest/20 py-3.5 sm:grid-cols-[6rem_minmax(0,1fr)_minmax(0,1.2fr)] sm:gap-x-6"
+            >
+              <span className="text-sm font-medium tabular-nums text-forest">{b.time}</span>
+              <span className="font-display font-bold leading-snug text-forest">{b.beat}</span>
+              <span className="col-start-2 text-sm leading-relaxed text-ink/75 sm:col-start-3">{b.purpose}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </article>
   );
 }
 
