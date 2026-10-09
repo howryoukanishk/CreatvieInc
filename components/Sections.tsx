@@ -40,7 +40,7 @@ export function Hero() {
             </div>
             <div>
               <dt className="label text-sage">Scope</dt>
-              <dd className="mt-1.5">10 competitor ads · 3 films</dd>
+              <dd className="mt-1.5">10 competitor ads · 4 films</dd>
             </div>
           </dl>
           <a
@@ -314,7 +314,7 @@ export function Films() {
             label="The Films"
             tone="dark"
             title="The executions."
-            intro="Three finished concept executions. These are creative concepts for testing — not tested performance winners."
+            intro="Four finished executions: three core routes and an animated bonus film. These are creative concepts for testing — not tested performance winners."
           />
         </Reveal>
 
@@ -329,7 +329,7 @@ export function Films() {
                   </div>
                   <div className={`lg:col-span-5 ${i % 2 ? "lg:order-1" : "lg:col-start-8"}`}>
                     <p className="label text-sage">
-                      <span className="text-yellow">Concept {concept.index}</span> · {concept.route}
+                      <span className="text-yellow">{concept.bonus ? concept.bonus.label : "Concept"} {concept.index}</span> · {concept.route}
                     </p>
                     <h3 className="display mt-4 text-3xl sm:text-4xl">{concept.title}</h3>
                     <p className="mt-4 leading-relaxed text-ivory/75">{concept.summary}</p>

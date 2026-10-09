@@ -95,14 +95,21 @@ export type Concept = {
   role?: string;
   direction?: string;
   recommended?: boolean;
-  // Bonus concepts sit outside the three core routes and have no finished film yet.
+  // Bonus concepts sit outside the three core routes and are presented beat by beat.
   bonus?: {
     label: string;
-    tagline: string;
+    workingTitle: string;
+    headline: string;
     intro: string;
     format: string;
-    storyboard: { title: string; description: string; image?: { src: string; alt: string } }[];
-    closing: { lines: string[]; cta: string };
+    beats: {
+      time: string;
+      title: string;
+      description: string;
+      onScreen?: string;
+      image: { src: string; alt: string };
+    }[];
+    closing: { product: string; lines: string[]; cta: string };
   };
 };
 
@@ -170,46 +177,64 @@ export const concepts: Concept[] = [
     slug: "more-moments",
     index: "04",
     route: "Animated brand film",
-    title: "For More Moments Like These",
+    title: "For All the Moments Still to Come",
     summary:
-      "A fully animated family story that connects bone health to the everyday moments worth holding on to.",
+      "A fully animated grandmother story that links everyday moments with her granddaughter to a forward-looking wellness routine.",
     audience:
-      "Women aged 30+ who value family relationships, personal independence, and the everyday moments they want to continue enjoying as they grow older.",
+      "Women aged 30+ who value family, independence, everyday wellbeing, and maintaining a wellness routine.",
     insight:
-      "Health matters not only as a long-term goal, but because it is connected to the everyday experiences and relationships that make life meaningful.",
+      "Health and wellness can feel more personally meaningful when connected to the ordinary moments and relationships people hope to continue enjoying.",
     rationale:
-      "A fully animated, emotionally driven story follows an elderly grandmother through moments of discomfort and reflection before shifting toward the simple joy of gardening and family life. The familiar, expressive animation style creates an emotional connection and helps the brand stand out from conventional supplement advertising. The story concludes with Vāyas as part of a broader bone-health and wellness routine, without implying that the product cures pain or restores mobility.",
+      "Animation carries the emotion without a spokesperson or testimonial. Block play with her granddaughter establishes warmth; the effort of standing and climbing the stairs, then a quiet moment at the window, introduce vulnerability with restraint. Gardening resolves the story before any product appears, and the line “For All the Moments Still to Come” turns it toward the future. Vāyas then enters as part of a broader wellness routine, without implying that the product cures pain or restores mobility.",
     role:
       "Brand differentiation and emotional storytelling. It expands the campaign’s creative range beyond direct-response formats and demonstrates a more cinematic, character-led approach.",
     direction:
       "Fully animated, stylized 3D with expressive characters, warm cinematic lighting, soft textures, a muted sage-green and ivory palette, and emotional family-film storytelling.",
     bonus: {
       label: "Bonus concept",
-      tagline: "For More Moments Like These.",
+      workingTitle: "For More Moments Like These",
+      headline: "For All the Moments Still to Come.",
       intro:
-        "Where the first three routes are lifestyle-led, this one is an animated brand film. It tells a grandmother’s story through small, familiar moments, so the case for bone health comes from what she wants to keep doing rather than from a list of benefits.",
-      format: "20-second animated film · storyboard stage",
-      storyboard: [
-        { title: "The Strong Beginning", description: "Grandmother shares a warm moment with her granddaughter." },
-        { title: "A Small Discomfort", description: "She experiences discomfort while standing." },
-        { title: "Everyday Becomes Harder", description: "Climbing stairs requires more effort." },
-        { title: "It Slows You Down", description: "She reflects on her limitations." },
+        "Where the first three routes are lifestyle-led, this one is an animated brand film. A grandmother’s ordinary day becomes a reminder of the moments still ahead, so the case for a wellness routine comes from what she wants to keep doing rather than from a list of benefits.",
+      format: "20 seconds · 9:16 · stylized 3D animation",
+      beats: [
         {
-          title: "Two Possible Tomorrows",
-          description: "The emotional idea of preserving independence and everyday experiences, with no promised health outcome.",
+          time: "0–4 sec",
+          title: "Emotional opening",
+          description:
+            "An elderly grandmother and her young granddaughter play together with building blocks on the floor. As she stands up, she rests a hand on her lower back while her granddaughter looks up at her.",
+          image: { src: "/films/more-moments/beat-1.jpg", alt: "Animated grandmother and granddaughter building a tower of wooden blocks on a rug" },
         },
-        { title: "More Good Days", description: "Gentle gardening and other meaningful everyday moments." },
-        { title: "Keep Doing What You Love", description: "The emotional message is reinforced." },
-        { title: "Meet Vāyas", description: "The product pack is introduced." },
         {
-          title: "Thoughtful Nutrition",
-          description: "Ingredient information, shown only as listed on the approved packaging.",
+          time: "4–7 sec",
+          title: "Everyday physical challenge",
+          description: "The grandmother climbs stairs with visible effort.",
+          image: { src: "/films/more-moments/beat-2.jpg", alt: "The grandmother holding the banister as she climbs a wooden staircase" },
         },
-        { title: "A Brighter Tomorrow", description: "A return to the emotional motivation." },
-        { title: "Final Frame", description: "Product hero, brand message and call to action." },
+        {
+          time: "7–11 sec",
+          title: "Reflective moment",
+          description: "She sits beside a window and looks toward her granddaughter playing in the garden.",
+          image: { src: "/films/more-moments/beat-3.jpg", alt: "The grandmother seated by an open window while her granddaughter plays in the garden outside" },
+        },
+        {
+          time: "11–15 sec",
+          title: "Emotional payoff",
+          description: "The grandmother is gardening.",
+          onScreen: "FOR ALL THE MOMENTS STILL TO COME.",
+          image: { src: "/films/more-moments/beat-4.jpg", alt: "The grandmother tending potted plants in a sunlit garden, with the line ‘For all the moments still to come’" },
+        },
+        {
+          time: "15–20 sec",
+          title: "Product reveal and CTA",
+          description: "The Vāyas bottle appears in a clean, premium product shot.",
+          onScreen: "VĀYAS / CALCIUM FOR WOMEN 30+, then MAKE BONE HEALTH PART OF YOUR WELLNESS ROUTINE. and SHOP NOW.",
+          image: { src: "/films/more-moments/beat-5.jpg", alt: "End card with the Vāyas Calcium for Women bottle on a plinth, the wellness-routine line and a Shop now button" },
+        },
       ],
       closing: {
-        lines: ["For more moments like these.", "Make bone health part of your wellness routine."],
+        product: "Vāyas / Calcium for Women 30+",
+        lines: ["Make bone health part of your wellness routine."],
         cta: "Shop now",
       },
     },
@@ -290,5 +315,12 @@ export const films: Film[] = [
     video: { src: "/films/emotional.mp4", poster: "/films/emotional-poster.jpg", aspect: "9/16", duration: "25s" },
     breakdown:
       "A rhythm of short, repeated lines, each paired with an everyday movement. The film stays on what the body does each day rather than on symptoms, and the product enters as daily support before the end card.",
+  },
+  {
+    slug: "more-moments",
+    conceptSlug: "more-moments",
+    video: { src: "/films/more-moments.mp4", poster: "/films/more-moments-poster.jpg", aspect: "9/16", duration: "20s" },
+    breakdown:
+      "Play, effort, reflection, then gardening: the story completes on its own before the product appears. The emotional headline lands over the garden, and the last five seconds move to the pack, the wellness-routine line and Shop now.",
   },
 ];

@@ -103,9 +103,11 @@ function BonusCard({ concept: c, isOpen, onToggle }: { concept: Concept; isOpen:
           <p className="mt-4 max-w-xl leading-relaxed text-muted">{c.summary}</p>
         </div>
         <div className="flex flex-col justify-end border-t border-sage pt-6 lg:col-span-5 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
-          <p className="label text-muted">Tagline</p>
-          <p className="mt-3 font-display text-2xl font-medium leading-snug text-forest sm:text-3xl">“{bonus.tagline}”</p>
-          <p className="mt-4 text-sm text-muted">{bonus.format}</p>
+          <p className="label text-muted">Final on-screen headline</p>
+          <p className="mt-3 font-display text-2xl font-medium leading-snug text-forest sm:text-3xl">“{bonus.headline}”</p>
+          <p className="mt-4 text-sm text-muted">
+            {bonus.format} · Working title: <i>{bonus.workingTitle}</i>
+          </p>
         </div>
         <div className="lg:col-span-12">
           <ToggleButton isOpen={isOpen} onToggle={onToggle} panelId={panelId} dark={false} />
@@ -123,15 +125,15 @@ function BonusCard({ concept: c, isOpen, onToggle }: { concept: Concept; isOpen:
           </div>
         </div>
 
-        <Storyboard frames={bonus.storyboard} format={bonus.format} />
+        <Beats beats={bonus.beats} format={bonus.format} />
 
         <div className="mt-12 rounded-md border border-sage bg-ivory px-6 py-10 text-center sm:px-10">
-          <p className="label text-muted">Closing brand message · end card</p>
+          <p className="label text-muted">End card · 15–20 sec</p>
           <p className="display mx-auto mt-5 max-w-2xl text-2xl uppercase leading-tight text-forest sm:text-3xl">
-            {bonus.closing.lines[0]}
+            {bonus.closing.product}
           </p>
-          {bonus.closing.lines.slice(1).map((line) => (
-            <p key={line} className="label mx-auto mt-3 max-w-xl text-[12px] text-ink">
+          {bonus.closing.lines.map((line) => (
+            <p key={line} className="label mx-auto mt-4 max-w-xl text-[12px] text-ink">
               {line}
             </p>
           ))}
@@ -140,51 +142,45 @@ function BonusCard({ concept: c, isOpen, onToggle }: { concept: Concept; isOpen:
           </p>
         </div>
 
-        <p className="mt-6 text-sm text-muted">
-          The animated film is in development, so there is no finished execution to play yet.
-        </p>
+        <a href={`#film-${c.slug}`} className="link-arrow mt-7 text-sm text-forest">
+          Watch the final film <span aria-hidden>↓</span>
+        </a>
       </div>
     </li>
   );
 }
 
-function Storyboard({ frames, format }: { frames: NonNullable<Concept["bonus"]>["storyboard"]; format: string }) {
-  const hasImages = frames.some((f) => f.image);
+function Beats({ beats, format }: { beats: NonNullable<Concept["bonus"]>["beats"]; format: string }) {
   return (
-    <section className="mt-12 border-t border-sage pt-8" aria-labelledby="more-moments-storyboard">
+    <section className="mt-12 border-t border-sage pt-8" aria-labelledby="more-moments-beats">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="label text-muted">{format}</p>
-          <h4 id="more-moments-storyboard" className="display mt-2 text-2xl text-forest sm:text-3xl">
-            Storyboard
+          <h4 id="more-moments-beats" className="display mt-2 text-2xl text-forest sm:text-3xl">
+            The final cut, beat by beat
           </h4>
         </div>
-        <p className="max-w-sm text-sm text-muted">
-          The current creative sequence, not a finished film.
-          {!hasImages && " Frames are placeholders until the approved storyboard images arrive."}
-        </p>
+        <p className="max-w-sm text-sm text-muted">Stills taken from the final 20-second film, with its exact on-screen text.</p>
       </div>
-      {!hasImages && <Pending what="Approved storyboard images for all 11 frames" className="mt-5" />}
 
       <ol
-        className="-mx-6 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-3 sm:-mx-8 sm:px-8 md:mx-0 md:grid md:snap-none md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4"
-        aria-label="Storyboard frames"
+        className="-mx-6 mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-3 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:snap-none lg:grid-cols-5 lg:overflow-visible lg:px-0 lg:pb-0"
+        aria-label="Film beats"
       >
-        {frames.map((f, i) => (
-          <li key={f.title} className="w-[70%] shrink-0 snap-start sm:w-[45%] md:w-auto">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-sage bg-sage/40">
-              {f.image ? (
-                <Image src={f.image.src} alt={f.image.alt} fill sizes="(min-width: 1024px) 22vw, (min-width: 768px) 30vw, 70vw" className="object-cover" />
-              ) : (
-                <div aria-hidden className="flex h-full flex-col justify-between p-4">
-                  <span className="label text-[10px] text-forest/60">Frame placeholder</span>
-                  <span className="display text-6xl text-forest/15">{String(i + 1).padStart(2, "0")}</span>
-                </div>
-              )}
+        {beats.map((b) => (
+          <li key={b.time} className="w-[62%] shrink-0 snap-start sm:w-[38%] md:w-[28%] lg:w-auto">
+            <div className="relative aspect-[9/16] overflow-hidden rounded-md border border-sage bg-sage/40">
+              <Image src={b.image.src} alt={b.image.alt} fill sizes="(min-width: 1024px) 18vw, (min-width: 640px) 38vw, 62vw" className="object-cover" />
             </div>
-            <p className="label mt-4 text-forest">Frame {String(i + 1).padStart(2, "0")}</p>
-            <p className="mt-1.5 font-display text-lg font-bold leading-tight text-forest">{f.title}</p>
-            <p className="mt-1.5 text-sm leading-relaxed text-muted">{f.description}</p>
+            <p className="label mt-4 tabular-nums text-forest">{b.time}</p>
+            <p className="mt-1.5 font-display text-lg font-bold leading-tight text-forest">{b.title}</p>
+            <p className="mt-1.5 text-sm leading-relaxed text-muted">{b.description}</p>
+            {b.onScreen && (
+              <p className="mt-2 text-xs leading-relaxed text-ink">
+                <span className="label text-[10px] text-muted">On screen: </span>
+                {b.onScreen}
+              </p>
+            )}
           </li>
         ))}
       </ol>
