@@ -237,7 +237,11 @@ export const videoAds: VideoAd[] = [
     learning:
       "Use a specific life-stage insight, but keep the need, product role and supportable claim aligned. Don’t imply one supplement addresses every symptom.",
     source: "https://www.facebook.com/ads/library/?id=2702285403506986",
-    media: null,
+    media: {
+      video: "/research/video/earthful-video-ad.mp4",
+      poster: "/research/video/earthful-poster.jpg",
+      label: "Earthful video ad: a son searching on his phone why his mother is always tired",
+    },
   },
   {
     slug: "restore-joint",
