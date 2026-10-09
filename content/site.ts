@@ -86,11 +86,22 @@ export type Concept = {
   route: string;
   title: string;
   summary: string;
+  // null = still to be supplied; a field left out entirely does not apply to this concept.
   audience: string | null;
   insight: string | null;
-  hook: string | null;
-  narrative: string | null;
+  hook?: string | null;
+  narrative?: string | null;
   rationale: string | null;
+  direction?: string;
+  // Bonus concepts sit outside the three core routes and have no finished film yet.
+  bonus?: {
+    label: string;
+    tagline: string;
+    intro: string;
+    format: string;
+    storyboard: { title: string; description: string; image?: { src: string; alt: string } }[];
+    closing: { lines: string[]; cta: string };
+  };
 };
 
 export const concepts: Concept[] = [
@@ -136,6 +147,52 @@ export const concepts: Concept[] = [
     narrative:
       "“Every step. Every responsibility. Every moment that matters.” runs over stairs, groceries, a stretch and carrying a child, landing on “You ask a lot from it.” She takes her tablet with a meal (“Daily nutritional support”), the ingredients appear, and the end card completes the line: “Take care of what carries you.”",
     rationale: null,
+  },
+  {
+    slug: "more-moments",
+    index: "04",
+    route: "Animated brand film",
+    title: "For More Moments Like These",
+    summary:
+      "A fully animated family story that connects bone health to the everyday moments worth holding on to.",
+    audience:
+      "Women aged 30+ who value family relationships, personal independence, and the everyday moments they want to continue enjoying as they grow older.",
+    insight:
+      "Health matters not only as a long-term goal, but because it is connected to the everyday experiences and relationships that make life meaningful.",
+    rationale:
+      "A fully animated, emotionally driven story follows an elderly grandmother through moments of discomfort and reflection before shifting toward the simple joy of gardening and family life. The familiar, expressive animation style creates an emotional connection and helps the brand stand out from conventional supplement advertising. The story concludes with Vāyas as part of a broader bone-health and wellness routine, without implying that the product cures pain or restores mobility.",
+    direction:
+      "Fully animated, stylized 3D with expressive characters, warm cinematic lighting, soft textures, a muted sage-green and ivory palette, and emotional family-film storytelling.",
+    bonus: {
+      label: "Bonus concept",
+      tagline: "For More Moments Like These.",
+      intro:
+        "Where the first three routes are lifestyle-led, this one is an animated brand film. It tells a grandmother’s story through small, familiar moments, so the case for bone health comes from what she wants to keep doing rather than from a list of benefits.",
+      format: "20-second animated film · storyboard stage",
+      storyboard: [
+        { title: "The Strong Beginning", description: "Grandmother shares a warm moment with her granddaughter." },
+        { title: "A Small Discomfort", description: "She experiences discomfort while standing." },
+        { title: "Everyday Becomes Harder", description: "Climbing stairs requires more effort." },
+        { title: "It Slows You Down", description: "She reflects on her limitations." },
+        {
+          title: "Two Possible Tomorrows",
+          description: "The emotional idea of preserving independence and everyday experiences, with no promised health outcome.",
+        },
+        { title: "More Good Days", description: "Gentle gardening and other meaningful everyday moments." },
+        { title: "Keep Doing What You Love", description: "The emotional message is reinforced." },
+        { title: "Meet Vāyas", description: "The product pack is introduced." },
+        {
+          title: "Thoughtful Nutrition",
+          description: "Ingredient information, shown only as listed on the approved packaging.",
+        },
+        { title: "A Brighter Tomorrow", description: "A return to the emotional motivation." },
+        { title: "Final Frame", description: "Product hero, brand message and call to action." },
+      ],
+      closing: {
+        lines: ["For more moments like these.", "Make bone health part of your wellness routine."],
+        cta: "Shop now",
+      },
+    },
   },
 ];
 

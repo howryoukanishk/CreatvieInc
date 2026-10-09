@@ -224,7 +224,7 @@ export function CreativeLab() {
           index="04"
           label="Creative Lab"
           title="Three concepts. Three different creative routes."
-          intro="Each route tests a different way into the same hypothesis. Open a concept to see the thinking behind it."
+          intro="Each route tests a different way into the same hypothesis, followed by an animated bonus film. Open a concept to see the thinking behind it."
         />
         <div className="mt-14 lg:mt-20">
           <ConceptCards concepts={concepts} />

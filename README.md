@@ -28,6 +28,7 @@ Any content field set to `null` renders as a yellow **Pending** slot. To fill on
 - **Films** — `films[n].video = { src: "/films/<slug>.mp4", poster: "/films/<slug>-poster.jpg", captions: "/films/<slug>.vtt", aspect: "9/16" }`
   and `films[n].breakdown = "…"`
 - **Concept details** — `audience`, `insight`, `hook`, `narrative`, `rationale` on each concept
+- **Bonus storyboard frames** — `concepts[3].bonus.storyboard[n].image = { src: "/storyboard/<n>.jpg", alt: "…" }` (images under `public/storyboard/`)
 - **Brief** — `brief.assignments` and `brief.interpretation`
 
 Video files over ~100 MB should be hosted externally (Vercel Blob, Mux, Cloudinary) and referenced by URL.
