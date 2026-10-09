@@ -16,7 +16,6 @@ export const sections = [
   { id: "insight", index: "03", label: "The Insight" },
   { id: "creative-lab", index: "04", label: "Creative Lab" },
   { id: "films", index: "05", label: "The Films" },
-  { id: "next-steps", index: "06", label: "Next Steps" },
 ] as const;
 
 export const brief = {
@@ -147,39 +146,4 @@ export const films: Film[] = [
   { slug: "cinematic", conceptSlug: "cinematic", video: null, breakdown: null },
   { slug: "social-native", conceptSlug: "social-native", video: null, breakdown: null },
   { slug: "emotional", conceptSlug: "emotional", video: null, breakdown: null },
-];
-
-export const nextSteps = {
-  // Testing hypotheses — pending.
-  hypotheses: null as { title: string; body: string }[] | null,
-};
-
-export type Deliverable = {
-  title: string;
-  kind: "PPTX" | "PDF" | "MP4";
-  href: string | null;
-  note?: string;
-};
-
-export const deliverables: Deliverable[] = [
-  {
-    title: "Static Ads — Competitive Analysis",
-    kind: "PPTX",
-    href: "/downloads/Vayas_Static_Ads_Competitive_Analysis.pptx",
-  },
-  {
-    title: "Static Ads — Competitive Analysis",
-    kind: "PDF",
-    href: null,
-  },
-  {
-    title: "Video Ads — Competitive Analysis",
-    kind: "PPTX",
-    href: "/downloads/Vayas_Video_Ads_Competitive_Analysis.pptx",
-  },
-  {
-    title: "Video Ads — Competitive Analysis",
-    kind: "PDF",
-    href: null,
-  },
 ];

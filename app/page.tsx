@@ -1,6 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { Brief, CreativeLab, Films, Footer, Hero, Insight, NextSteps, Research } from "@/components/Sections";
+import { Brief, CreativeLab, Films, Footer, Hero, Insight, Research } from "@/components/Sections";
 
 export default function Home() {
   return (
@@ -20,7 +20,6 @@ export default function Home() {
         <Insight />
         <CreativeLab />
         <Films />
-        <NextSteps />
       </main>
       <Footer />
     </>

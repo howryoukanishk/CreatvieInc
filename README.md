@@ -13,12 +13,11 @@ npm run build    # production build
 | Path | What |
 | --- | --- |
 | `content/research.ts` | 5 static + 5 video competitor analyses, scores, Meta Ad Library sources |
-| `content/site.ts` | Brief, insight, concepts, films, next steps, deliverables |
+| `content/site.ts` | Brief, insight, concepts, films |
 | `components/` | Nav, scroll progress, ad cards + lightbox, video-ad accordion, concept cards, film player |
 | `public/research/static/` | Original static ad screenshots |
 | `public/research/video/` | Video-ad poster frames / clips (pending) |
 | `public/films/` | The three concept films, posters, captions (pending) |
-| `public/downloads/` | PPTX / PDF deliverables |
 
 ## Adding pending assets
 
@@ -30,7 +29,5 @@ Any content field set to `null` renders as a yellow **Pending** slot. To fill on
   and `films[n].breakdown = "…"`
 - **Concept details** — `audience`, `insight`, `hook`, `narrative`, `rationale` on each concept
 - **Brief** — `brief.assignments` and `brief.interpretation`
-- **Testing hypotheses** — `nextSteps.hypotheses = [{ title, body }, …]`
-- **PDFs** — set `href` on the PDF entries in `deliverables`
 
 Video files over ~100 MB should be hosted externally (Vercel Blob, Mux, Cloudinary) and referenced by URL.

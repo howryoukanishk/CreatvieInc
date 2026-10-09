@@ -1,5 +1,5 @@
 import { criteria, SCORE_DISCLAIMER, staticAds, videoAds } from "@/content/research";
-import { brief, concepts, deliverables, films, insight, nextSteps, site } from "@/content/site";
+import { brief, concepts, films, insight, site } from "@/content/site";
 import { ConceptCards } from "./ConceptCards";
 import { ExternalLink } from "./ExternalLink";
 import { FilmPlayer } from "./FilmPlayer";
@@ -283,77 +283,9 @@ export function Films() {
   );
 }
 
-/* 06 — Next Steps */
-export function NextSteps() {
-  return (
-    <section id="next-steps" className="section">
-      <Reveal className="shell">
-        <SectionHeader
-          index="06"
-          label="Next Steps"
-          title="What to test next."
-          intro="Hypotheses to validate with real audience data, and the full deliverables behind this site."
-        />
-
-        <div className="mt-14 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
-            <p className="label text-muted">Testing hypotheses</p>
-            {nextSteps.hypotheses ? (
-              <ol className="mt-5 border-t border-ink/15">
-                {nextSteps.hypotheses.map((h, i) => (
-                  <li key={h.title} className="grid grid-cols-[2.5rem_1fr] gap-x-4 border-b border-ink/15 py-6">
-                    <span className="label pt-1.5 text-forest">H{i + 1}</span>
-                    <div>
-                      <p className="font-display text-xl font-bold text-forest">{h.title}</p>
-                      <p className="mt-2 leading-relaxed text-muted">{h.body}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            ) : (
-              <Pending what="Testing hypotheses for the three concepts" className="mt-5" />
-            )}
-          </div>
-
-          <div className="lg:col-span-5">
-            <p className="label text-muted">Deliverables</p>
-            <ul className="mt-5 space-y-3">
-              {deliverables.map((d) => (
-                <li key={`${d.title}-${d.kind}`}>
-                  {d.href ? (
-                    <a
-                      href={d.href}
-                      download
-                      className="on-light group flex items-center justify-between gap-4 rounded-md border border-ink/10 bg-white/50 p-4 transition-colors duration-200 hover:border-forest/40"
-                    >
-                      <span>
-                        <span className="label text-forest">{d.kind}</span>
-                        <span className="mt-1 block font-medium">{d.title}</span>
-                      </span>
-                      <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest text-yellow transition-transform duration-200 group-hover:translate-y-0.5">
-                        ↓
-                      </span>
-                    </a>
-                  ) : (
-                    <div className="rounded-md border border-dashed border-ink/20 p-4">
-                      <span className="label text-muted">{d.kind}</span>
-                      <span className="mt-1 block font-medium text-muted">{d.title}</span>
-                      <Pending what="File to be supplied" className="mt-3 border-none px-0 py-0" />
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
 export function Footer() {
   return (
-    <footer className="bg-forest text-ivory">
+    <footer className="border-t border-ivory/10 bg-forest text-ivory">
       <div className="shell grid gap-10 py-16 sm:py-20 lg:grid-cols-12">
         <p className="display text-5xl sm:text-6xl lg:col-span-7">
           From insight
