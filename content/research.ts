@@ -178,8 +178,9 @@ export type VideoAd = {
   weakness: string[];
   learning: string;
   source: string;
-  // Poster frame or short clip — pending upload. Leave null until the asset exists.
-  media: { poster: string; video?: string; alt: string } | null;
+  // Original ad file downloaded from the Meta Ad Library, plus a frame from it as the poster.
+  // Leave null until the asset exists.
+  media: { video: string; poster: string; label: string } | null;
 };
 
 export const videoAds: VideoAd[] = [
@@ -206,7 +207,11 @@ export const videoAds: VideoAd[] = [
     learning:
       "If Vāyas uses education, build the story around one accurate, memorable visual idea—and ensure the spoken explanation matches the science.",
     source: "https://www.facebook.com/ads/library/?id=2319141408905145",
-    media: null,
+    media: {
+      video: "/research/video/zanskar-video-ad.mp4",
+      poster: "/research/video/zanskar-poster.jpg",
+      label: "Zanskar video ad: 3D animation of bone cells rebuilding bone",
+    },
   },
   {
     slug: "earthful",
@@ -256,7 +261,11 @@ export const videoAds: VideoAd[] = [
     learning:
       "A formulation-led creator ad should explain one credible difference clearly, rather than implying broad cause-and-effect between calcium and joint symptoms.",
     source: "https://www.facebook.com/ads/library/?id=940577628698244",
-    media: null,
+    media: {
+      video: "/research/video/restore-joint-video-ad.mp4",
+      poster: "/research/video/restore-joint-poster.jpg",
+      label: "Restore Joint video ad: a woman speaking to camera about daily calcium and joint pain",
+    },
   },
   {
     slug: "lightyears-move-easy",
@@ -282,7 +291,11 @@ export const videoAds: VideoAd[] = [
     learning:
       "Treat this as an adjacent-category reference for problem-led storytelling—not proof of how calcium ads perform. Keep the problem and product category tightly matched.",
     source: "https://www.facebook.com/ads/library/?id=1023247943880206",
-    media: null,
+    media: {
+      video: "/research/video/lightyears-move-easy-video-ad.mp4",
+      poster: "/research/video/lightyears-move-easy-poster.jpg",
+      label: "LightYears Move Easy video ad: people walking with visible knee discomfort",
+    },
   },
   {
     slug: "the-body-reserve",
@@ -307,6 +320,10 @@ export const videoAds: VideoAd[] = [
     learning:
       "If using an all-in-one claim, make convenience the single lead idea and support it with a credible, relevant user story.",
     source: "https://www.facebook.com/ads/library/?id=2055520835070847",
-    media: null,
+    media: {
+      video: "/research/video/the-body-reserve-video-ad.mp4",
+      poster: "/research/video/the-body-reserve-poster.jpg",
+      label: "The Body Reserve video ad: hand-held bottle under a “Real customer, real experiences” label",
+    },
   },
 ];

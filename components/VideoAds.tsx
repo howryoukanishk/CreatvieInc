@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import type { VideoAd } from "@/content/research";
 import { ExternalLink } from "./ExternalLink";
@@ -51,9 +50,22 @@ export function VideoAds({ ads }: { ads: VideoAd[] }) {
               <div className="grid gap-8 lg:grid-cols-12">
                 <div className="lg:col-span-4">
                   {ad.media ? (
-                    <div className="relative aspect-[9/16] max-h-[70svh] overflow-hidden rounded-md bg-forest">
-                      <Image src={ad.media.poster} alt={ad.media.alt} fill sizes="(min-width:1024px) 30vw, 100vw" className="object-cover" />
-                    </div>
+                    <figure>
+                      <video
+                        className="mx-auto block aspect-[9/16] max-h-[70svh] w-full max-w-[360px] rounded-md bg-forest object-contain lg:mx-0"
+                        controls
+                        playsInline
+                        preload="none"
+                        poster={ad.media.poster}
+                        aria-label={ad.media.label}
+                      >
+                        <source src={ad.media.video} type="video/mp4" />
+                        <a href={ad.media.video}>Download the original ad</a>
+                      </video>
+                      <figcaption className="mt-2 text-xs text-muted">
+                        Original ad from the Meta Ad Library. Captions are burned into the video.
+                      </figcaption>
+                    </figure>
                   ) : (
                     <div className="flex aspect-[4/5] max-h-[420px] w-full flex-col justify-between rounded-md bg-forest p-5 text-ivory sm:aspect-[9/12]">
                       <p className="label text-sage">{ad.product}</p>
